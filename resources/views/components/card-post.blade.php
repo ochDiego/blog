@@ -2,7 +2,11 @@
 
 <article class="mb-8 rounded-lg overflow-hidden bg-white shadow-lg">
     <figure>
-        <img class="w-full h-72 object-cover object-center" src="{{asset('storage/' . $post->image->url)}}" alt="">
+        @if ($post->image)
+            <img class="w-full h-72 object-cover object-center" src="{{asset('storage/' . $post->image->url)}}" alt="">
+        @else
+            <img class="w-full h-72 object-cover object-center" src="https://cdn.pixabay.com/photo/2023/08/06/13/25/waves-8172942_1280.jpg" alt="">
+        @endif
     </figure>
 
     <div class="px-6 py-4">

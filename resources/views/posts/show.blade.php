@@ -12,7 +12,11 @@
 
             <div class="lg:col-span-2">
                 <figure>
-                    <img class="w-full h-80 object-cover object-center" src="{{asset('storage/' . $post->image->url)}}" alt="">
+                    @if ($post->image)
+                        <img class="w-full h-80 object-cover object-center" src="{{asset('storage/' . $post->image->url)}}" alt="">
+                    @else
+                        <img class="w-full h-80 object-cover object-center" src="https://cdn.pixabay.com/photo/2023/08/06/13/25/waves-8172942_1280.jpg" alt="">
+                    @endif
                 </figure>
 
                 <div class="text-base text-gray-500 mt-4">
@@ -27,7 +31,11 @@
                     @foreach ($similares as $similar)
                         <li class="mb-4">
                             <a href="{{route('posts.show',$similar)}}" class="flex">
-                                <img class="w-36 h-20 object-cover object-center" src="{{asset('storage/' . $similar->image->url)}}" alt="">
+                                @if ($similar->image)
+                                    <img class="w-36 h-20 object-cover object-center" src="{{asset('storage/' . $similar->image->url)}}" alt="">
+                                @else
+                                    <img class="w-36 h-20 object-cover object-center" src="https://cdn.pixabay.com/photo/2023/08/06/13/25/waves-8172942_1280.jpg" alt="">
+                                @endif
                                 <span class="text-base text-gray-600 flex-1 ml-2">{{$similar->name}}</span>
                             </a>
                         </li>
